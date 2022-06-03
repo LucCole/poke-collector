@@ -34,12 +34,9 @@ setsRouter.get('/:id', async (req, res, next) => {
     const responce = {};
     const id = Number(req.params.id);
 
-    console.log('req.params.id: ', req.params.id);
-
     for(let set of sets){
       console.log('set: ', set);
       if(set.id === id){
-        console.log('id has been found');
         responce.set = set;
       }
     }
@@ -56,5 +53,42 @@ setsRouter.get('/:id', async (req, res, next) => {
     next(error);
   }
 });
+
+//  POST - api/sets
+setsRouter.post('/', async (req, res, next) => {
+  try{
+
+    const data = require('../data/sets.json');
+    const responce = {};
+
+    data.sets.push({
+      id: data.sets.length + 1,
+      name: req.body.name, 
+      logo:req.body.logo,
+      icon: req.body.icon,
+      releaseDate: req.body.releaseDate,
+      cards: req.body.cards,
+      normalCards: req.body.normalCards,
+      secretCards: req.body.secretCards
+    });
+
+    fs.writeFileSync("data/sets.json", JSON.stringify(data));
+
+    res.status(201).send({id: data.sets.length + 1});
+
+  }catch(error){
+    next(error);
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 module.exports = setsRouter

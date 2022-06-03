@@ -15,6 +15,7 @@
 
 * sets
   - create set
+  - get all sets
   - get set
     - by id
   - edit set

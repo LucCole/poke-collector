@@ -1,0 +1,24 @@
+{
+  "sets": [
+    {
+      "id": 1,
+      "name": "Jungle", 
+      "logo": "https://serebii.net/card/logo/jungle.png",
+      "icon": "https://serebii.net/card/logo/jungle-th.png",
+      "releaseDate": "June 16th 1999",
+      "cards": 64,
+      "normalCards": 64,
+      "secretCards": 0
+    },
+    {
+      "id": 2,
+      "name": "Fossil", 
+      "logo": "https://serebii.net/card/logo/fossil.png",
+      "icon": "https://serebii.net/card/logo/fossil-th.png",
+      "releaseDate": "October 10th 1999",
+      "cards": 62,
+      "normalCards": 62,
+      "secretCards": 0
+    }
+  ]
+}
