@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:start": "node index.js",
+    "server:dev:start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/LucCole/poke-collector/issues"
   },
-  "homepage": "https://github.com/LucCole/poke-collector#readme"
+  "homepage": "https://github.com/LucCole/poke-collector#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
 }
