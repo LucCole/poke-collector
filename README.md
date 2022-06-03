@@ -3,16 +3,6 @@
 
 ## API parts
 
-* cards
-  - create card
-  - get cards
-    - by id
-    - by set
-  - edit card
-  - get cards
-  - delete card
-
-
 * sets
   - create set
   - get all sets
@@ -21,6 +11,14 @@
   - edit set
   - delete set
 
+* cards
+  - create card
+  - get cards
+    - by id
+    - by set
+  - edit card
+  - get cards
+  - delete card
 
 * collections
   - create collection

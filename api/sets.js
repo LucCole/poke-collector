@@ -89,6 +89,34 @@ setsRouter.post('/', async (req, res, next) => {
 
 
 
+//  DELETE - api/sets/:id
+setsRouter.delete('/:id', async (req, res, next) => {
+  try{
 
+    const data = require('../data/sets.json');
+    const responce = {};
+
+
+    for(let i = 0; i < data.sets.length; i++){
+      if(data.sets[i].id === Number(req.params.id)){
+        data.sets.splice(i, 1);
+        responce.id = req.params.id;
+      }
+    }
+
+    console.log('req.params.id: ', req.params.id);
+
+    if('id' in responce){
+      fs.writeFileSync("data/sets.json", JSON.stringify(data));
+      res.status(201).send(responce);
+    }else{
+      // change status ??
+      res.status(201).send({error: 'No set with that id'});
+    }
+
+  }catch(error){
+    next(error);
+  }
+});
 
 module.exports = setsRouter

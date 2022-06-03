@@ -32,9 +32,6 @@ const API_URL = 'http://localhost:3001/api';
 // });
 
 
-
-
-
 // Sets
 describe('Sets', () => {
 
@@ -147,57 +144,83 @@ describe('Sets', () => {
   // });
 
 
+  // // Create set
+  // describe('Create set', () => {
 
+  //   let data;
+  //   let status
 
+  //   beforeAll(async() => {
 
+  //     const response = await axios.post(`${API_URL}/sets`, {
+  //       "name": "butteredBagel", 
+  //       "name": "name 1", 
+  //       "logo": "logog 1",
+  //       "icon": "icon 1",
+  //       "releaseDate": "realseDate 1",
+  //       "cards": 11,
+  //       "normalCards": 12,
+  //       "secretCards": 13
+  //     });
 
-
-
-
-
-
-
-  
-  // Create set
-  describe('Create set', () => {
-
-    let data;
-    let status
-
-    beforeAll(async() => {
-
-      const response = await axios.post(`${API_URL}/sets`, {
-        "name": "butteredBagel", 
-        "name": "name 1", 
-        "logo": "logog 1",
-        "icon": "icon 1",
-        "releaseDate": "realseDate 1",
-        "cards": 11,
-        "normalCards": 12,
-        "secretCards": 13
-      });
-
-      data = response.data;
-      status = response.status;
-    });
+  //     data = response.data;
+  //     status = response.status;
+  //   });
 
     
-    it("Status 201", async () => {  
-      expect(status).toEqual(201);
-    });
+  //   it("Status 201", async () => {  
+  //     expect(status).toEqual(201);
+  //   });
 
-    it("Data is object", async () => {
-      expect(typeof data).toEqual('object');
-    });
+  //   it("Data is object", async () => {
+  //     expect(typeof data).toEqual('object');
+  //   });
 
-    it("Data has id property", async () => {
-      expect('id' in data).toEqual(true);
-    });
+  //   it("Data has id property", async () => {
+  //     expect('id' in data).toEqual(true);
+  //   });
 
-    it("id property is a number", async () => {
-      expect(typeof data.id).toEqual('number');
-    });
+  //   it("id property is a number", async () => {
+  //     expect(typeof data.id).toEqual('number');
+  //   });
 
-  });
+  // });
+
+
+
+
+
+
+
+
+
+
+    // Delete set
+    // describe('Delete set', () => {
+
+    //   let data;
+    //   let status
+  
+    //   beforeAll(async() => {
+  
+    //     const response = await axios.delete(`${API_URL}/sets/2`);
+  
+    //     data = response.data;
+    //     status = response.status;
+    //   });
+      
+    //   it("Status 201", async () => {  
+    //     expect(status).toEqual(201);
+    //   });
+  
+    //   it("Data is object", async () => {
+    //     expect(typeof data).toEqual('object');
+    //   });
+  
+    //   it("Data has id property", async () => {
+    //     expect('id' in data).toEqual(true);
+    //   });
+  
+    // });
 
 });
