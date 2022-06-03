@@ -10,4 +10,7 @@ apiRouter.get('/ping', (req, res, next) => {
   }
 });
 
+const setsRouter = require('./sets');
+apiRouter.use('/sets', setsRouter);
+
 module.exports = apiRouter
