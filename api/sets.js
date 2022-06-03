@@ -26,4 +26,35 @@ setsRouter.get('/', async (req, res, next) => {
   }
 });
 
+// GET - api/sets/:id
+setsRouter.get('/:id', async (req, res, next) => {
+  try{  
+
+    const {sets} = require('../data/sets.json');
+    const responce = {};
+    const id = Number(req.params.id);
+
+    console.log('req.params.id: ', req.params.id);
+
+    for(let set of sets){
+      console.log('set: ', set);
+      if(set.id === id){
+        console.log('id has been found');
+        responce.set = set;
+      }
+    }
+
+    if('set' in responce){
+
+      res.status(200).send(responce.set);
+    }else{
+      // this would end up being a 404??
+      res.status(200).send({error: "No set with that id"});
+    }
+
+  }catch(error){
+    next(error);
+  }
+});
+
 module.exports = setsRouter
