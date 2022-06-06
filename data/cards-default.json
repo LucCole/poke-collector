@@ -1,0 +1,96 @@
+{
+  "cards": [
+    { 
+      "id": 1,
+      "name": "Aerodactyl",
+      "image": "https://serebii.net/card/fossil/1.jpg",
+      "set": 2,
+      "number": 1,
+      "rarity": "Rare",
+      "artist": "Kagemaru Himeno"
+    },
+    { 
+      "id": 2,
+      "name": "Articuno",
+      "image": "https://serebii.net/card/fossil/2.jpg",
+      "set": 2,
+      "number": 2,
+      "rarity": "Rare",
+      "artist": "Mitsuhiro Arita"
+    },
+    { 
+      "id": 3,
+      "name": "Ditto",
+      "image": "https://serebii.net/card/fossil/3.jpg",
+      "set": 2,
+      "number": 3,
+      "rarity": "Rare",
+      "artist": "Keiji Kinebuchi"
+    },
+    { 
+      "id": 4,
+      "name": "Dragonite",
+      "image": "https://serebii.net/card/fossil/4.jpg",
+      "set": 2,
+      "number": 4,
+      "rarity": "Rare",
+      "artist": "Kagemaru Himeno"
+    },
+    { 
+      "id": 5,
+      "name": "Gengar",
+      "image": "https://serebii.net/card/fossil/5.jpg",
+      "set": 2,
+      "number": 5,
+      "rarity": "Rare",
+      "artist": "Keiji Kinebuchi"
+    },
+    { 
+      "id": 6,
+      "name": "Clefable",
+      "image": "https://serebii.net/card/jungle/1.jpg",
+      "set": 1,
+      "number": 1,
+      "rarity": "Rare",
+      "artist": "Mitsuhiro Arita"
+    },
+    { 
+      "id": 7,
+      "name": "Electrode",
+      "image": "https://serebii.net/card/jungle/2.jpg",
+      "set": 1,
+      "number": 2,
+      "rarity": "Rare",
+      "artist": "Mitsuhiro Arita"
+    },
+    { 
+      "id": 8,
+      "name": "Flareon",
+      "image": "https://serebii.net/card/jungle/3.jpg",
+      "set": 1,
+      "number": 3,
+      "rarity": "Rare",
+      "artist": "Kagemaru Himeno"
+    },
+    { 
+      "id": 9,
+      "name": "Jolteon",
+      "image": "https://serebii.net/card/jungle/4.jpg",
+      "set": 1,
+      "number": 4,
+      "rarity": "Rare",
+      "artist": "Kagemaru Himeno"
+    },
+    { 
+      "id": 10,
+      "name": "Kangaskhan",
+      "image": "https://serebii.net/card/jungle/5.jpg",
+      "set": 1,
+      "number": 5,
+      "rarity": "Rare",
+      "artist": "Mitsuhiro Arita"
+    }
+  ]
+}
+
+
