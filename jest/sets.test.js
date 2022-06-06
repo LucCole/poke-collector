@@ -1,36 +1,6 @@
 const axios = require('axios');
 const API_URL = 'http://localhost:3001/api';
 
-// API
-// describe('API', () => {
-
-//   describe('Ping', () => {
-
-//     let data;
-//     let status
-
-//     beforeAll(async() => {
-//       const responce = await axios.get(`${API_URL}/ping`);
-//       data = responce.data;
-//       status = responce.status;
-//     });
-
-//     it("Status is 200", async () => {
-//       expect(status).toEqual(200);
-//     });
-
-//     it("Data is object", async () => {
-//       expect(typeof data).toEqual('object');
-//     });
-
-//     it("success property equal true", async () => {
-//       expect('success' in data && data.success === true).toEqual(true);
-//     });
-
-//   });
-
-// });
-
 
 // Sets
 describe('Sets', () => {
@@ -42,9 +12,9 @@ describe('Sets', () => {
     let status
 
     beforeAll(async() => {
-      const responce = await axios.get(`${API_URL}/sets/ping`);
-      data = responce.data;
-      status = responce.status;
+      const response = await axios.get(`${API_URL}/sets/ping`);
+      data = response.data;
+      status = response.status;
     });
 
     it("Status is 200", async () => {
@@ -68,9 +38,9 @@ describe('Sets', () => {
     let status
 
     beforeAll(async() => {
-      const responce = await axios.get(`${API_URL}/sets`);
-      data = responce.data;
-      status = responce.status;
+      const response = await axios.get(`${API_URL}/sets`);
+      data = response.data;
+      status = response.status;
     });
 
     it("Status is 200", async () => {
@@ -93,9 +63,9 @@ describe('Sets', () => {
       let status
   
       beforeAll(async() => {
-        const responce = await axios.get(`${API_URL}/sets/1`);
-        data = responce.data;
-        status = responce.status;
+        const response = await axios.get(`${API_URL}/sets/1`);
+        data = response.data;
+        status = response.status;
       });
   
       it("Status is 200", async () => {
@@ -119,9 +89,9 @@ describe('Sets', () => {
       let status
 
       beforeAll(async() => {
-        const responce = await axios.get(`${API_URL}/sets/10`);
-        data = responce.data;
-        status = responce.status;
+        const response = await axios.get(`${API_URL}/sets/10`);
+        data = response.data;
+        status = response.status;
       });
 
       // Should be 400??
@@ -244,5 +214,16 @@ describe('Sets', () => {
     });
 
   });
+
+  // Reset
+  // afterAll(async() => {
+  //   const response = await axios.get(`${API_URL}/reset`);
+  //   data = response.data;
+  //   status = response.status;
+
+
+  //   console.log('data: ', data);
+  //   console.log('status: ', status);
+  // });
 
 });
