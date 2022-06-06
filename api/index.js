@@ -31,4 +31,7 @@ apiRouter.get('/reset', (req, res, next) => {
 const setsRouter = require('./sets');
 apiRouter.use('/sets', setsRouter);
 
+const cardsRouter = require('./cards');
+apiRouter.use('/cards', cardsRouter);
+
 module.exports = apiRouter
