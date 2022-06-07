@@ -18,8 +18,12 @@ apiRouter.get('/reset', (req, res, next) => {
   try{
 
     // sets
-    const data = require('../data/sets-default.json');
-    fs.writeFileSync("data/sets.json", JSON.stringify(data));
+    const sets = require('../data/sets-default.json');
+    fs.writeFileSync("data/sets.json", JSON.stringify(sets));
+
+    // cards
+    const cards = require('../data/cards-default.json');
+    fs.writeFileSync("data/cards.json", JSON.stringify(cards));
 
     res.status(200).send({success: true});
   }catch(error){
