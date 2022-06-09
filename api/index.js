@@ -1,5 +1,7 @@
 const express = require('express');
 const apiRouter = express();
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = process.env;
 
 // Remove when DB added
 const fs = require('fs');
@@ -30,6 +32,60 @@ apiRouter.get('/reset', (req, res, next) => {
     next(error);
   }
 });
+
+
+
+apiRouter.use(async (req, res, next) => {
+
+  const prefix = 'Bearer ';
+  const auth = req.header('Authorization');
+
+  if (!auth) {
+    console.log('No Auth');
+      next();
+  } else if (auth.startsWith(prefix)) {
+
+    console.log('Auth');
+
+
+    const token = auth.slice(prefix.length);
+
+    try {
+        const { id } = jwt.verify(token, JWT_SECRET);
+        if (id) {
+
+
+          console.log('id:', id);
+
+
+
+          const data = require('../data/users.json');
+          let user;
+      
+          for(let i = 0; i < data.users.length; i++){
+            if(data.users[i].id === id){
+              user = data.users[i];
+            }
+          }
+
+            req.user = user
+            console.log(req.user);
+            next();
+        }  
+    } catch (error) {
+        next(error);
+    }
+  } else {
+      next({
+          name: 'AuthorizationHeaderError',
+          message: `Authorization token must start with ${ prefix }`
+      });
+  }
+
+});
+
+
+
 
 
 const setsRouter = require('./sets');
