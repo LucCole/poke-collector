@@ -38,4 +38,7 @@ apiRouter.use('/sets', setsRouter);
 const cardsRouter = require('./cards');
 apiRouter.use('/cards', cardsRouter);
 
+const usersRouter = require('./users');
+apiRouter.use('/users', usersRouter);
+
 module.exports = apiRouter
