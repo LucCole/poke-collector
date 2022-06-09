@@ -20,9 +20,23 @@
   - get cards
   - delete card
 
+* Users
+  - Register
+  - Login
+  - Delete user
+  - Get user
+  - Make admin
+
 * collections
   - create collection
   - veiw collection 
   - add card to collection (whether or not you have the card, we won't change the actual card in the collection)
   - delete collection
 
+
+
+
+
+NPM 
+
+Do I need env?
