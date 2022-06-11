@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id":2,
+      "username":"hello",
+      "email":"hello@yahoo.com",
+      "password":"$2b$10$h1By6qA4uLuziXWA3FAS.Ovc3SOORG1tBEl6bWalicbwkuYtVhfWi",
+      "admin": true
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 
 const express = require('express');
 const cardsRouter = express.Router();
+const middleware = require('./middleware');
 
 // Remove when DB added
 const fs = require('fs');
@@ -13,9 +14,6 @@ cardsRouter.get('/ping', async (req, res, next) => {
     next(error);
   }
 });
-
-
-
 
 // GET - api/cards
 cardsRouter.get('/', async (req, res, next) => {
@@ -82,25 +80,8 @@ cardsRouter.get('/:id', async (req, res, next) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //  POST - api/cards
-cardsRouter.post('/', async (req, res, next) => {
+cardsRouter.post('/', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/cards.json');
@@ -126,7 +107,7 @@ cardsRouter.post('/', async (req, res, next) => {
 });
 
 //  EDIT - api/cards/:id
-cardsRouter.patch('/:id', async (req, res, next) => {
+cardsRouter.patch('/:id', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/cards.json');
@@ -173,7 +154,7 @@ cardsRouter.patch('/:id', async (req, res, next) => {
 });
 
 //  DELETE - api/cards/:id
-cardsRouter.delete('/:id', async (req, res, next) => {
+cardsRouter.delete('/:id', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/cards.json');
@@ -198,12 +179,5 @@ cardsRouter.delete('/:id', async (req, res, next) => {
     next(error);
   }
 });
-
-
-
-
-
-
-
 
 module.exports = cardsRouter

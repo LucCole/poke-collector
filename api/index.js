@@ -27,13 +27,15 @@ apiRouter.get('/reset', (req, res, next) => {
     const cards = require('../data/cards-default.json');
     fs.writeFileSync("data/cards.json", JSON.stringify(cards));
 
+    // users
+    const users = require('../data/users-default.json');
+    fs.writeFileSync("data/users.json", JSON.stringify(users));
+
     res.status(200).send({success: true});
   }catch(error){
     next(error);
   }
 });
-
-
 
 apiRouter.use(async (req, res, next) => {
 
@@ -41,11 +43,11 @@ apiRouter.use(async (req, res, next) => {
   const auth = req.header('Authorization');
 
   if (!auth) {
-    console.log('No Auth');
+    // console.log('No Auth');
       next();
   } else if (auth.startsWith(prefix)) {
 
-    console.log('Auth');
+    // console.log('Auth');
 
 
     const token = auth.slice(prefix.length);
@@ -55,8 +57,7 @@ apiRouter.use(async (req, res, next) => {
         if (id) {
 
 
-          console.log('id:', id);
-
+          // console.log('id:', id);
 
 
           const data = require('../data/users.json');
@@ -69,7 +70,7 @@ apiRouter.use(async (req, res, next) => {
           }
 
             req.user = user
-            console.log(req.user);
+            // console.log(req.user);
             next();
         }  
     } catch (error) {
