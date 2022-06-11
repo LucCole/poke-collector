@@ -1,10 +1,10 @@
 
 const express = require('express');
 const usersRouter = express.Router();
+const middleware = require('./middleware');
 
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
-
 
 // can go into DB I think
 const bcrypt = require('bcrypt');
@@ -12,7 +12,6 @@ const SALT_COUNT = 10;
 
 // Remove when DB added
 const fs = require('fs');
-
 
 // GET - api/users/ping
 usersRouter.get('/ping', (req, res, next) => {
@@ -87,20 +86,84 @@ usersRouter.post('/register', async (req, res, next) => {
     // Create user
     const data = require('../data/users.json');
 
+    const id = data.users.length + 1;
+
     data.users.push({
-      id: data.users.length + 1,
+      id,
       username,
       email,
-      password: hashedPassword
+      password: hashedPassword,
+      admin: false
     });
 
     fs.writeFileSync("data/users.json", JSON.stringify(data));
 
-    const token = jwt.sign({id: data.users.length + 1, username: username}, JWT_SECRET, { expiresIn: '1w' });
+    const token = jwt.sign({id: data.users.length, username: username}, JWT_SECRET, { expiresIn: '1w' });
     res.status(201).send({ username, message: "you're signed up!", token });
 
   } catch (error) {
     next(error)
+  }
+});
+
+// GET - api/users/getuser
+usersRouter.get('/getuser', [middleware.requireUser], async (req, res, next) => {
+  try{  
+
+    const currentUserId = req.user.id;
+
+    const {users} = require('../data/users.json');
+    const responce = {};
+
+    for(let user of users){
+      if(user.id === currentUserId){
+        delete user.password; 
+        responce.user = user;
+      }
+    }
+
+    if('user' in responce){
+      res.status(200).send(responce.user);
+    }else{
+      // this would end up being a 404??
+      res.status(404).send({error: "User not found"});
+    }
+
+  }catch(error){
+    next(error);
+  }
+});
+
+//  PATCH - api/sets/:id
+usersRouter.patch('/admin-status/:id', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
+  try{
+
+    const data = require('../data/users.json');
+    const responce = {};
+
+    for(let i = 0; i < data.users.length; i++){
+
+      if(data.users[i].id === Number(req.params.id)){
+
+        const user = data.users[i];
+        user.admin = user.admin ? false : true;
+
+        data.users[i] = user;
+
+        responce.id = req.params.id;
+      }
+    }
+
+    if('id' in responce){
+      fs.writeFileSync("data/users.json", JSON.stringify(data));
+      res.status(201).send(responce);
+    }else{
+      // change status ??
+      res.status(201).send({error: 'No set with that id'});
+    }
+
+  }catch(error){
+    next(error);
   }
 });
 
