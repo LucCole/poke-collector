@@ -43,22 +43,15 @@ apiRouter.use(async (req, res, next) => {
   const auth = req.header('Authorization');
 
   if (!auth) {
-    // console.log('No Auth');
       next();
   } else if (auth.startsWith(prefix)) {
-
-    // console.log('Auth');
-
 
     const token = auth.slice(prefix.length);
 
     try {
         const { id } = jwt.verify(token, JWT_SECRET);
+
         if (id) {
-
-
-          // console.log('id:', id);
-
 
           const data = require('../data/users.json');
           let user;
@@ -69,8 +62,7 @@ apiRouter.use(async (req, res, next) => {
             }
           }
 
-            req.user = user
-            // console.log(req.user);
+            req.user = user;
             next();
         }  
     } catch (error) {
