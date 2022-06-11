@@ -1,6 +1,7 @@
 
 const express = require('express');
 const setsRouter = express.Router();
+const middleware = require('./middleware');
 
 // Remove when DB added
 const fs = require('fs');
@@ -54,7 +55,7 @@ setsRouter.get('/:id', async (req, res, next) => {
 });
 
 //  POST - api/sets
-setsRouter.post('/', async (req, res, next) => {
+setsRouter.post('/', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/sets.json');
@@ -81,7 +82,7 @@ setsRouter.post('/', async (req, res, next) => {
 });
 
 //  EDIT - api/sets/:id
-setsRouter.patch('/:id', async (req, res, next) => {
+setsRouter.patch('/:id', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/sets.json');
@@ -130,7 +131,7 @@ setsRouter.patch('/:id', async (req, res, next) => {
 });
 
 //  DELETE - api/sets/:id
-setsRouter.delete('/:id', async (req, res, next) => {
+setsRouter.delete('/:id', [middleware.requireUser, middleware.isAdmin], async (req, res, next) => {
   try{
 
     const data = require('../data/sets.json');
